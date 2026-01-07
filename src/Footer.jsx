@@ -22,11 +22,11 @@ const Footer = () => {
       </span>
 
       <a
-        href="https://github.com/anas-maroof/netflix-gpt"
+        href="https://github.com/anas-maroof/devTinder-web"
         target="_blank"
         rel="noopener noreferrer"
         className="text-white hover:text-red-400 font-bold transition"
-        title="Netflix GPT GitHub Repository"
+        title="DevTinder GitHub Repository"
       >
         Dev<span className="text-red-500">Tinder</span>
       </a>
