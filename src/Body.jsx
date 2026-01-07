@@ -5,9 +5,14 @@ import { Outlet } from "react-router-dom";
 
 const Body = () => {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <Outlet />
+
+      {/* Main content */}
+      <main className="grow">
+        <Outlet />
+      </main>
+
       <Footer />
     </div>
   );
