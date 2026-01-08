@@ -9,64 +9,129 @@ const Login = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    if (!emailId || !password) {
+      setError("Please enter email and password");
+      return;
+    }
+
     try {
+      setLoading(true);
+      setError("");
+
       const res = await axios.post(
         BASE_URL + "/login",
-        {
-          emailId,
-          password,
-        },
+        { emailId, password },
         { withCredentials: true }
       );
+
       dispatch(addUser(res.data));
       navigate("/");
     } catch (err) {
-      setError(err?.response?.data || "Something went wrong!!");
+      setError(err?.response?.data || "Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Submit on Enter key
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
     }
   };
 
   return (
-    <div className="flex justify-center my-10">
-      <div className="card bg-base-300 w-96 shadow-sm">
-        <div className="card-body">
-          <h2 className="card-title justify-center">Login</h2>
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-base-200 px-4">
+      <div className="card w-full max-w-sm bg-base-300 shadow-xl border border-base-100">
+        <div className="card-body gap-4">
+
+          {/* Heading */}
+          <h2 className="text-2xl font-bold text-center bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+            Welcome Back 👋
+          </h2>
+          <p className="text-center text-sm text-gray-400">
+            Login to continue to DevTinder
+          </p>
 
           {/* Email */}
           <fieldset className="fieldset">
-            <legend className="fieldset-legend text-sm">Email ID</legend>
+            <legend className="fieldset-legend text-sm text-gray-300">
+              Email ID
+            </legend>
             <input
-              type="text"
+              type="email"
               value={emailId}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full focus:ring-2 focus:ring-primary"
               placeholder="email@xyz.com"
-              required
               onChange={(e) => setEmailId(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </fieldset>
 
           {/* Password */}
           <fieldset className="fieldset">
-            <legend className="fieldset-legend text-sm">Password</legend>
-            <input
-              type="password"
-              value={password}
-              className="input input-bordered w-full"
-              placeholder="Password"
-              required
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <legend className="fieldset-legend text-sm text-gray-300">
+              Password
+            </legend>
+
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                className="input input-bordered w-full pr-12 focus:ring-2 focus:ring-primary"
+                placeholder="••••••••"
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+
+              {/* Show / Hide Icon */}
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
           </fieldset>
 
-          <div className="card-actions justify-center mt-4">
-            <p className="text-red-500">{error}</p>
-            <button className="btn btn-primary w-full" onClick={handleLogin}>
-              Login
-            </button>
-          </div>
+          {/* Error */}
+          {error && (
+            <p className="text-center text-sm text-error font-medium">
+              {error}
+            </p>
+          )}
+
+          {/* Button */}
+          <button
+            className="btn btn-primary w-full mt-2"
+            onClick={handleLogin}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <span className="loading loading-spinner loading-sm"></span>
+                Logging in...
+              </>
+            ) : (
+              "Login"
+            )}
+          </button>
+
+          {/* Footer */}
+          <p className="text-center text-xs text-gray-400 mt-2">
+            New here?{" "}
+            <span className="text-primary cursor-pointer hover:underline">
+              Create an account
+            </span>
+          </p>
         </div>
       </div>
     </div>
