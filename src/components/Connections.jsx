@@ -42,7 +42,6 @@ const Connections = () => {
       </div>
     );
   }
-  const validConnections = connections.filter(Boolean);
 
   return (
     <div className="px-6 py-10">
@@ -51,7 +50,7 @@ const Connections = () => {
       </h1>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {validConnections.map((user) => (
+        {connections.map((user) => (
           <div
             key={user._id}
             className="bg-base-300 rounded-2xl shadow-lg p-5 hover:shadow-2xl transition relative"
