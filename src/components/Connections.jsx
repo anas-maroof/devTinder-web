@@ -42,6 +42,7 @@ const Connections = () => {
       </div>
     );
   }
+  const validConnections = connections.filter(Boolean);
 
   return (
     <div className="px-6 py-10">
@@ -50,7 +51,7 @@ const Connections = () => {
       </h1>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {connections.map((user) => (
+        {validConnections.map((user) => (
           <div
             key={user._id}
             className="bg-base-300 rounded-2xl shadow-lg p-5 hover:shadow-2xl transition relative"
@@ -100,7 +101,7 @@ const Connections = () => {
                   href={user.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-success text-xl transition"
+                  className="text-black-400 hover:text-success text-xl transition"
                 >
                   <FaGithub />
                 </a>
@@ -111,7 +112,7 @@ const Connections = () => {
                   href={user.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-success text-xl transition"
+                  className="text-blue-400 hover:text-success text-xl transition"
                 >
                   <FaLinkedin />
                 </a>

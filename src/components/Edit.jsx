@@ -18,6 +18,8 @@ const Edit = () => {
   const [about, setAbout] = useState("");
   const [skills, setSkills] = useState([]);
   const [error, setError] = useState("");
+  const [github, setGithub] = useState("");
+  const [linkedIn, setLinkedIn] = useState("");
 
   const saveProfile = async () => {
     setError("");
@@ -52,6 +54,8 @@ const Edit = () => {
       setPhotoUrl(user.photoUrl || "");
       setAbout(user.about || "");
       setSkills(user.skills || []);
+      setGithub(user.github || "");
+      setLinkedIn(user.linkedIn || "");
     }
   }, [user]);
 
@@ -140,6 +144,30 @@ const Edit = () => {
             />
           </div>
 
+          {/* GitHub */}
+          <div className="md:col-span-2">
+            <label className="text-sm text-gray-400">GitHub Profile</label>
+            <input
+              type="text"
+              className="input input-bordered w-full mt-1"
+              placeholder="https://github.com/username"
+              value={github}
+              onChange={(e) => setGithub(e.target.value)}
+            />
+          </div>
+
+          {/* LinkedIn */}
+          <div className="md:col-span-2">
+            <label className="text-sm text-gray-400">LinkedIn Profile</label>
+            <input
+              type="text"
+              className="input input-bordered w-full mt-1"
+              placeholder="https://linkedin.com/in/username"
+              value={linkedIn}
+              onChange={(e) => setLinkedIn(e.target.value)}
+            />
+          </div>
+
           {/* About */}
           <div className="md:col-span-2">
             <label className="text-sm text-gray-400">About</label>
@@ -179,7 +207,9 @@ const Edit = () => {
         {/* Save Button */}
         <div>{error && <p className="text-error text-sm mt-1">{error}</p>}</div>
         <div className="flex justify-center mt-8">
-          <button className="btn btn-primary px-10" onClick={saveProfile}>💾 Save Profile</button>
+          <button className="btn btn-primary px-10" onClick={saveProfile}>
+            💾 Save Profile
+          </button>
         </div>
       </div>
     </div>
