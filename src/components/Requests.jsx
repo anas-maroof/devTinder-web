@@ -4,6 +4,7 @@ import { BASE_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequest } from "../utils/requestSlice";
 import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Requests = () => {
   const dispatch = useDispatch();
@@ -71,19 +72,47 @@ const Requests = () => {
               className="bg-base-300 rounded-2xl shadow-lg p-5 hover:shadow-2xl transition"
             >
               {/* Profile */}
+              {/* Profile */}
               <div className="flex items-center gap-4">
                 <img
                   src={user.photoUrl || "/default-avatar.png"}
                   alt="profile"
                   className="w-16 h-16 rounded-full object-cover border border-base-100"
                 />
+
                 <div>
                   <h2 className="text-lg font-semibold text-white">
                     {user.firstName} {user.lastName}
                   </h2>
+
                   <p className="text-sm text-gray-400 capitalize">
                     {user.gender} {user.age && `• ${user.age} yrs`}
                   </p>
+
+                  {/* Social links */}
+                  <div className="flex gap-3 mt-1">
+                    {user.github && (
+                      <a
+                        href={user.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-gray-400 hover:text-success transition text-lg"
+                      >
+                        <FaGithub />
+                      </a>
+                    )}
+
+                    {user.linkedIn && (
+                      <a
+                        href={user.linkedIn}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-gray-400 hover:text-success transition text-lg"
+                      >
+                        <FaLinkedin />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
 

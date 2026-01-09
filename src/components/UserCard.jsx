@@ -91,10 +91,7 @@ const UserCard = ({ user }) => {
           )}
 
           {/* Actions */}
-          <div className="card-actions justify-between mt-4">
-            <button className="btn btn-outline btn-error btn-sm">Ignore</button>
-            <button className="btn btn-primary btn-sm">Interested</button>
-          </div>
+          
         </div>
       </div>
     </div>
