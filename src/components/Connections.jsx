@@ -4,6 +4,7 @@ import { BASE_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
 import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const Connections = () => {
         {connections.map((user) => (
           <div
             key={user._id}
-            className="bg-base-300 rounded-2xl shadow-lg p-5 hover:shadow-2xl transition"
+            className="bg-base-300 rounded-2xl shadow-lg p-5 hover:shadow-2xl transition relative"
           >
             {/* Profile */}
             <div className="flex items-center gap-4">
@@ -91,6 +92,31 @@ const Connections = () => {
                 ))}
               </div>
             )}
+
+            {/* Social Links */}
+            <div className="flex gap-4 mt-5">
+              {user.github && (
+                <a
+                  href={user.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-success text-xl transition"
+                >
+                  <FaGithub />
+                </a>
+              )}
+
+              {user.linkedIn && (
+                <a
+                  href={user.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-success text-xl transition"
+                >
+                  <FaLinkedin />
+                </a>
+              )}
+            </div>
           </div>
         ))}
       </div>
