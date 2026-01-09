@@ -72,7 +72,7 @@ const Navbar = () => {
 
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-200 rounded-xl mt-4 w-52 p-2 shadow-xl border border-base-100"
+              className="menu menu-lg dropdown-content bg-base-200 rounded-xl mt-4 w-52 p-2 shadow-xl border border-base-100"
             >
               <li>
                 <Link to="/profile" className="justify-between">
@@ -80,7 +80,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/password">Change Passowrd</Link>
               </li>
               <div className="divider my-1"></div>
               <li>
