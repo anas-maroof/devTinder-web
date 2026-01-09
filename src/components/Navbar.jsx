@@ -33,7 +33,7 @@ const Navbar = () => {
           className="btn btn-ghost text-2xl font-bold tracking-wide hover:scale-105 transition"
         >
           👩‍💻
-          <span className="ml-2 bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+          <span className="ml-2 bg-linear-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
             DevTinder
           </span>
         </button>

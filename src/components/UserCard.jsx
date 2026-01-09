@@ -1,7 +1,17 @@
 import React from "react";
 
 const UserCard = ({ user }) => {
-  const { firstName, lastName, about, age, gender, skills, photoUrl, github, linkedIn } = user;
+  const {
+    firstName,
+    lastName,
+    about,
+    age,
+    gender,
+    skills,
+    photoUrl,
+    github,
+    linkedIn,
+  } = user;
 
   return (
     <div className="flex justify-center my-2">
@@ -20,9 +30,6 @@ const UserCard = ({ user }) => {
           {/* Name */}
           <h2 className="card-title text-xl font-semibold">
             {firstName} {lastName}
-            {age && (
-              <span className="badge badge-accent ml-2 text-xs">{age}</span>
-            )}
             <div className="flex gap-4 mt-2">
               {github ? (
                 <a
@@ -55,9 +62,14 @@ const UserCard = ({ user }) => {
           </h2>
 
           {/* Gender */}
-          {gender && (
-            <p className="text-xs text-gray-400 capitalize">{gender}</p>
-          )}
+          <div>
+            {gender && (
+              <span className="badge badge-accent text-xs">{gender}</span>
+            )}
+            {age && (
+              <span className="badge badge-accent ml-2 text-xs">{age}</span>
+            )}
+          </div>
 
           {/* About (limited lines) */}
           {about && (

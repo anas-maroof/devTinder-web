@@ -53,7 +53,7 @@ const Login = () => {
         <div className="card-body gap-4">
 
           {/* Heading */}
-          <h2 className="text-2xl font-bold text-center bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+          <h2 className="text-2xl font-bold text-center bg-linear-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
             Welcome Back 👋
           </h2>
           <p className="text-center text-sm text-gray-400">
