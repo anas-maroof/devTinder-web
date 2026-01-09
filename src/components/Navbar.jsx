@@ -10,11 +10,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await axios.post(
-      BASE_URL + "/logout",
-      {},
-      { withCredentials: true }
-    );
+    await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
     dispatch(removeUser());
     navigate("/login");
   };
@@ -25,7 +21,6 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-300 shadow-md px-4 sticky top-0 z-50">
-      
       {/* Logo */}
       <div className="flex-1">
         <button
@@ -42,13 +37,22 @@ const Navbar = () => {
       {/* Right Section */}
       {user && (
         <div className="flex items-center gap-4">
-          
+          <Link
+            to="/connections"
+            className="font-bold text-green-500 px-2 py-1 transition-all duration-200 hover:bg-green-500 hover:text-white hover:rounded-full">
+            Connections
+          </Link>
+
+          <Link
+            to="/requests"
+            className="font-bold text-red-500 px-2 py-1 transition-all duration-200 hover:bg-red-500 hover:text-white hover:rounded-full">
+            Requests
+          </Link>
+
           {/* Welcome */}
-          <span className="hidden sm:block text-sm text-gray-300">
+          <span className="hidden sm:block text-lg text-gray-300">
             Welcome,{" "}
-            <span className="font-semibold text-white">
-              {user.firstName}
-            </span>
+            <span className="font-semibold text-white">{user.firstName}</span>
           </span>
 
           {/* Avatar Dropdown */}
