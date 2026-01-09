@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constant";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("");
@@ -51,7 +52,6 @@ const Login = () => {
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-base-200 px-4">
       <div className="card w-full max-w-sm bg-base-300 shadow-xl border border-base-100">
         <div className="card-body gap-4">
-
           {/* Heading */}
           <h2 className="text-2xl font-bold text-center bg-linear-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
             Welcome Back 👋
@@ -126,12 +126,14 @@ const Login = () => {
           </button>
 
           {/* Footer */}
-          <p className="text-center text-xs text-gray-400 mt-2">
-            New here?{" "}
-            <span className="text-primary cursor-pointer hover:underline">
-              Create an account
-            </span>
-          </p>
+          <Link to="/signup">
+            <p className="text-center text-xs text-gray-400 mt-2">
+              New here?{" "}
+              <span className="text-primary cursor-pointer hover:underline">
+                Create an account
+              </span>
+            </p>
+          </Link>
         </div>
       </div>
     </div>
