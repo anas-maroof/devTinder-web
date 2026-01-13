@@ -117,6 +117,14 @@ const Connections = () => {
                 </a>
               )}
             </div>
+            {/* Chat Button */}
+            <Link to={"/chat/" + user._id}>
+              <div className="mt-6">
+                <button className="btn btn-success btn-outline w-full flex items-center gap-2 hover:scale-[1.02] transition">
+                  💬 Chat
+                </button>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
